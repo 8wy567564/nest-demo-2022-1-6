@@ -2,7 +2,7 @@ import { Controller, HttpException, HttpStatus, UseFilters, Get, Post, Body, Pat
 import { TeacherService } from './teacher.service';
 import { CreateTeacherDto } from './dto/create-teacher.dto';
 import { UpdateTeacherDto } from './dto/update-teacher.dto';
-import { HttpExceptionFilterFilter } from 'src/filter/http-exception-filter.filter';
+// import { HttpExceptionFilterFilter } from 'src/filter/http-exception-filter.filter';
 
 @Controller('teacher')
 export class TeacherController {
@@ -13,11 +13,13 @@ export class TeacherController {
     return this.teacherService.create(createTeacherDto);
   }
 
-  @Get()
-  @UseFilters(HttpExceptionFilterFilter)
+  @Get("joke")
+  // @UseFilters(HttpExceptionFilterFilter)
   findAll() {
-    throw new HttpException('Forbidden123', HttpStatus.FORBIDDEN);
-    return this.teacherService.findAll();
+    // throw new HttpException('Forbidden123', HttpStatus.FORBIDDEN);
+    return this.teacherService.getJoke()
+    // return "asd"
+    // return this.teacherService.findAll();
   }
 
   @Get(':id')
